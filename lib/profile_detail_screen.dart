@@ -5,47 +5,73 @@ class ProfileScreenDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Profile'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/profile_picture.jpg'),
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text('Profile'),
+              // bottom: TabBar(tabs: [Tab(text: ,)]),
             ),
-            SizedBox(height: 20),
-            Text(
-              'John Doe',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+            body: TabBarView(children: [
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('assets/profile_picture.jpg'),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'John Doe',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Software Engineer',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ListTile(
+                      leading: Icon(Icons.email),
+                      title: Text('john.doe@example.com'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.phone),
+                      title: Text('+1 234 567 890'),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Software Engineer',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.grey,
+              Center(
+                child: ListView(
+                  children: [
+                    ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text('Follower 1'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text('Follower 2'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person),
+                      title: Text('Follower 3'),
+                    ),
+                    // Add more ListTiles for additional followers
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            ListTile(
-              leading: Icon(Icons.email),
-              title: Text('john.doe@example.com'),
-            ),
-            ListTile(
-              leading: Icon(Icons.phone),
-              title: Text('+1 234 567 890'),
-            ),
-          ],
-        ),
-      ),
-    );
+              Center(
+                child: Text('Tidak ada Follower'),
+              )
+            ])));
   }
 }

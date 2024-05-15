@@ -100,37 +100,26 @@ class MovieScreen extends StatelessWidget {
         title: Text('Movies'),
         backgroundColor: Colors.deepOrange,
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Daftar Film',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepOrange,
-              ),
-            ),
-            SizedBox(height: 20),
-            MovieCard(
-              title: 'Film 1',
-              director: 'Sutradara 1',
-              imageUrl: 'https://example.com/image1.jpg',
-            ),
-            MovieCard(
-              title: 'Film 2',
-              director: 'Sutradara 2',
-              imageUrl: 'https://example.com/image2.jpg',
-            ),
-            MovieCard(
-              title: 'Film 3',
-              director: 'Sutradara 3',
-              imageUrl: 'https://example.com/image3.jpg',
-            ),
-            // Add more MovieCard widgets for additional movies
-          ],
-        ),
+      body: ListView(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        children: <Widget>[
+          MovieCard(
+            title: 'Film 1',
+            director: 'Sutradara 1',
+            imageUrl: 'https://example.com/image1.jpg',
+          ),
+          MovieCard(
+            title: 'Film 2',
+            director: 'Sutradara 2',
+            imageUrl: 'https://example.com/image2.jpg',
+          ),
+          MovieCard(
+            title: 'Film 3',
+            director: 'Sutradara 3',
+            imageUrl: 'https://example.com/image3.jpg',
+          ),
+          // Add more MovieCard widgets for additional movies
+        ],
       ),
     );
   }

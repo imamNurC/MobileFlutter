@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uassmt6/home_screen.dart';
+import 'package:uassmt6/login_form.dart';
 import 'package:uassmt6/movie_screen.dart';
 import 'package:uassmt6/profile_detail_screen.dart';
 import 'package:uassmt6/profile_screen.dart';
@@ -10,7 +11,7 @@ class WidgetSaya extends StatelessWidget {
   WidgetSaya({super.key});
   // This widget is the root of your application.
   //
-  var screens = [HomeScreen(), Profile()];
+  var screens = [HomeScreen(), Profile(), FormPage()];
   var screenIndex = 0.obs;
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,10 @@ class WidgetSaya extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.person),
                   label: "Profile",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.lock_open),
+                  label: "Login",
                 ),
               ],
               selectedItemColor: Colours.ratingColor, // Set dynamic color
