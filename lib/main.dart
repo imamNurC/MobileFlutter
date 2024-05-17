@@ -11,7 +11,7 @@ class WidgetSaya extends StatelessWidget {
   WidgetSaya({super.key});
   // This widget is the root of your application.
   //
-  var screens = [HomeScreen(), Profile(), FormPage()];
+  var screens = [HomeScreen(), Profile(), LoginScreen()];
   var screenIndex = 0.obs;
   @override
   Widget build(BuildContext context) {
