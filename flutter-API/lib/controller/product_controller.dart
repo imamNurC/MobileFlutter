@@ -17,11 +17,11 @@ class ProductController extends GetxController {
   Future<void> getProducts() async {
     try {
       isLoading(true);
-      final response =
-          await http.get(Uri.parse('$url/products?skip=0&limit=10'));
+      final response = await http.get(Uri.parse('$url/products?skip=0&limit=10'));
 
       if (response.statusCode == 200) {
         // Successful request
+        // var data = jsonDecode(response.body)
         List<dynamic> data = jsonDecode(response.body);
         products.assignAll(data.map((json) => Product.fromMap(json)).toList());
       } else {
