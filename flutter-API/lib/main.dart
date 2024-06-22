@@ -27,6 +27,7 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});  
 
   final ProductController productController = ProductController();
+  // final productController = Provider.of<ProductController>(context);
 
   @override
   Widget build(BuildContext context) {
@@ -35,33 +36,28 @@ class MyHomePage extends StatelessWidget {
         // The title text which will be shown on the action bar
         title: Text(title),
       ),
-      body: Center(
-        child: GetBuilder<ProductController>(
-          init: productController,
-          builder: (_) {
-            if (productController.isLoading.value) {
-              return CircularProgressIndicator();
-            } else {
-              return Container(
-                padding: EdgeInsets.all(16.0),
-                child: ListView.builder(
-                  itemCount: productController.products.length,
-                  itemBuilder: (context, index) {
-                    Product product = productController.products[index];
-                    return Card(
-                      child: ListTile(
-                        title: Text(product.name),
-                        subtitle: Text(product.description),
-                        trailing: Text('\$${product.price.toStringAsFixed(2)}'),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }
-          },
-        ),
-      ),
+      body: productController.isLoading
+          ? Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: productController.products.length,
+              itemBuilder: (context, index) {
+                Product product = productController.products[index];
+                return ListTile(
+                  title: Text(product.title),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ID: ${product.id}'),
+                      Text('Category: ${product.category}'),
+                      Text('Price: \$${product.price.toString()}'),
+                      Text('Rating: ${product.rating.toString()}'),
+                      Text('Stock: ${product.stock.toString()}'),
+                      Text('Images: ${product.images.join(', ')}'),
+                    ],
+                  ),
+                );
+              },
+            ),
     );
   }
 }
